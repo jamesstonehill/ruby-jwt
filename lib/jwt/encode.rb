@@ -25,7 +25,8 @@ module JWT
     def validate_payload!
       return unless @payload && @payload.is_a?(Hash)
 
-      validate_exp!
+      valildator = ClaimsValidator.new(payload)
+      valildator.valildate!
     end
 
     def validate_exp!
